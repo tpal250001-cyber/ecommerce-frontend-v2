@@ -12,7 +12,7 @@ const token = localStorage.getItem("token");
     
   }
   return (
-    <div className=" sticky top-0 z-10">
+    <div className=" sticky top-0 z-10 w-full">
       <div className="flex justify-between py-4 border-2 rounded h-25 bg-black  ">
         <div className="my-3 ">
           <Link to="/product" className="pl-5 text-white text-xl font-semibold">
