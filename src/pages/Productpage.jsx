@@ -3,10 +3,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
+//import { Addtocart } from "../../../backenenend/controllers/Cartcontroller";
 export const Productpage = () => {
   const [products, setproducts] = useState([]);
   //onst navigate = useNavigate()
-
   async function Loadproducts() {
     const res = await fetch("http://localhost:3001/api/auth/v2/get");
     const data = await res.json();
@@ -17,7 +17,7 @@ export const Productpage = () => {
   useEffect(() => {
     Loadproducts();
   }, []);
-  async function Addtocart(productid) {
+  async function Addtocartt(productid) {
     const Userid = localStorage.getItem("userid");
     const token = localStorage.getItem("token");
     const cart = await fetch("http://localhost:3001/api/auth/v4/cart", {
@@ -35,7 +35,6 @@ export const Productpage = () => {
     console.log(data);
   }
 
-
   return (
     <div className="h-full w-full flex justify-center items-center bg-white " >
     <div className="grid  grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-8 ">
@@ -45,9 +44,7 @@ export const Productpage = () => {
           <h1 className="font-semibold ">{product.name}</h1>
           <h2 className="font-bold">{product.price} </h2>
           <div>
-            <button onClick={  function(){
-              Addtocart(product._id)
-            }} className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium
+            <button onClick={()=>{ Addtocartt(product._id)}} className="px-6 py-3 bg-indigo-600 text-white rounded-lg font-medium
   transition-all duration-500 ease-in-out
   hover:bg-indigo-700 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-indigo-500/40
   active:translate-y-0 " >Add to cart</button>

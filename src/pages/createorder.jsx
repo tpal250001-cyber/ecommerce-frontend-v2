@@ -77,7 +77,7 @@ export function CheckoutPage() {
       // Step 3: Razorpay checkout popup kholo
      const options = {
 
-          key: import.meta.env.Rozarpay_test_key,
+          key: import.meta.env.VITE_ROZARPAY_KEY_ID,
           amount:dataa.razorpayorder.amount,
           currency:"INR",
           name:"quick cart",
@@ -135,7 +135,7 @@ export function CheckoutPage() {
           color: "#3399cc",
         },
       };
-
+   console.log(import.meta.env.VITE_ROZARPAY_KEY_ID)
       const rzp = new window.Razorpay(options);
       rzp.open();
       
