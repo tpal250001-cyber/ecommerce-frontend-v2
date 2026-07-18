@@ -13,7 +13,8 @@ export function CheckoutPage() {
   
   async function fetchCart() {
       
-         const carts = await fetch(`http://localhost:3001/api/auth/v4/getcart/${Userid}`,
+        // const carts = await fetch(`http://localhost:3001/api/auth/v4/getcart/${Userid}`,
+        const carts = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/getcart/${Userid}`,
       {
         method: "get",
         headers: {

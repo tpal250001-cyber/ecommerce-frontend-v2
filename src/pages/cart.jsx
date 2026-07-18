@@ -14,9 +14,11 @@ export function Cart() {
   }, []);
 
   async function Loadproducts() {
-    const carts = await fetch(
-      `http://localhost:3001/api/auth/v4/getcart/${Userid}`,
-      {
+   // const carts = await fetch(
+     // `http://localhost:3001/api/auth/v4/getcart/${Userid}`,
+     const carts = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/getcart/${Userid}`, 
+     
+     {
         method: "get",
         headers: {
           "content-type": "application/json",
@@ -43,7 +45,8 @@ export function Cart() {
     const Userid = localStorage.getItem("userid");
     const token = localStorage.getItem("token");
 
-    const res = await fetch("http://localhost:3001/api/auth/v4/update", {
+   // const res = await fetch("http://localhost:3001/api/auth/v4/update", {
+     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/update`,{
       method: "put",
       headers: {
         "content-type": "application/json",
@@ -66,7 +69,8 @@ export function Cart() {
     const Userid = localStorage.getItem("userid");
     const token = localStorage.getItem("token");
 
-    const item = await fetch("http://localhost:3001/api/auth/v4/remove", {
+    //const item = await fetch("http://localhost:3001/api/auth/v4/remove", {
+  const item = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/remove`,{
       method: "delete",
       headers: {
         "content-type": "application/json",

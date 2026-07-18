@@ -14,7 +14,8 @@ export function Signup() {
   async function Onhandlesubmit(e) {
     console.log("tusha");
     e.preventDefault();
-    const res = await fetch("http://localhost:3001/api/auth/v1/signup", {
+    //const res = await fetch("http://localhost:3001/api/auth/v1/signup", {
+ const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v1/signup`,{
       method: "Post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),

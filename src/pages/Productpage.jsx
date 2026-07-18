@@ -8,7 +8,8 @@ export const Productpage = () => {
   const [products, setproducts] = useState([]);
   //onst navigate = useNavigate()
   async function Loadproducts() {
-    const res = await fetch("http://localhost:3001/api/auth/v2/get");
+    //const res = await fetch("http://localhost:3001/api/auth/v2/get");
+     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v2/get`)
     const data = await res.json();
     console.log(data);
     setproducts(data);
@@ -20,8 +21,9 @@ export const Productpage = () => {
   async function Addtocartt(productid) {
     const Userid = localStorage.getItem("userid");
     const token = localStorage.getItem("token");
-    const cart = await fetch("http://localhost:3001/api/auth/v4/cart", {
-      method: "Post",
+   // const cart = await fetch("http://localhost:3001/api/auth/v4/cart", {
+   const cart = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/cart`,{  
+   method: "Post",
       headers: {
         "content-type": "application/json",
         token: token,
