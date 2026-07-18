@@ -50,9 +50,10 @@ export function CheckoutPage() {
       }, 0);
   console.log(items)
       // Order create karo (address ke saath)
-      const  data  = await fetch(
-        "http://localhost:3001/api/auth/v3/create",{
-         
+     // const  data  = await fetch(
+       // "http://localhost:3001/api/auth/v3/create",{
+         const data = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v3/create`,{
+
           method:"post",
          headers: { 
           "content-type": "application/json",
@@ -89,9 +90,10 @@ export function CheckoutPage() {
           try {
             console.log(response)
         
-            const verifyRes = await fetch(
-              "http://localhost:3001/api/auth/v3/verify",
-              {
+           // const verifyRes = await fetch(
+             // "http://localhost:3001/api/auth/v3/verify",
+             const verifyRes = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v3/verify`, 
+             {
                 method: "post",
                 headers: {
                   "content-type": "application/json",
