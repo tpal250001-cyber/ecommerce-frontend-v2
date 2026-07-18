@@ -12,8 +12,9 @@ export function CreateProduct() {
 
   async function handlesubmit() {
     try {
-      const response = await fetch("http://localhost:3001/api/auth/v2/create", {
-       
+      //const response = await fetch("http://localhost:3001/api/auth/v2/create", {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v2/create`,{ 
+
         method: "post",
          headers: { 
           "content-type": "application/json",

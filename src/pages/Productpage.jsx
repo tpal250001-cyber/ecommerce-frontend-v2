@@ -9,7 +9,9 @@ export const Productpage = () => {
   //onst navigate = useNavigate()
   async function Loadproducts() {
     //const res = await fetch("http://localhost:3001/api/auth/v2/get");
-     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v2/get`)
+     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v2/get`,{
+      method:"get"
+     })
     const data = await res.json();
     console.log(data);
     setproducts(data);
@@ -23,7 +25,7 @@ export const Productpage = () => {
     const token = localStorage.getItem("token");
    // const cart = await fetch("http://localhost:3001/api/auth/v4/cart", {
    const cart = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/cart`,{  
-   method: "Post",
+   method: "post",
       headers: {
         "content-type": "application/json",
         token: token,

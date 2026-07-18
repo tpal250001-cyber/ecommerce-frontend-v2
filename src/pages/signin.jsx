@@ -17,7 +17,7 @@ export function Signin() {
     //const res = await fetch("http://localhost:3001/api/auth/v1/signin", {
     const res = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v1/signin`,{
     
-    method: "Post",
+    method: "post",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
