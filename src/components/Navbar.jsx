@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@base-ui/react";
+import { LogOut } from "lucide-react";
 export function Navbar() {
   const navigate = useNavigate();
 
@@ -47,9 +48,9 @@ const token = localStorage.getItem("token");
               </span>
             ) : (
               <span>
-                <Button
+                <Button variant="ghost" size="sm"
                   onClick={logout}
-                  className="text-white text-xl font-semibold outline sm"
+                  className="text-white text-xl font-semibold "
                   
                 >
                 logout
