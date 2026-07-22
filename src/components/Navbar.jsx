@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Button } from "@base-ui/react";
 export function Navbar() {
   const navigate = useNavigate();
 
@@ -46,12 +47,13 @@ const token = localStorage.getItem("token");
               </span>
             ) : (
               <span>
-                <button
+                <Button
                   onClick={logout}
-                  className="text-white text-xl font-semibold"
+                  className="text-white text-xl font-semibold outline sm"
+                  
                 >
                 logout
-                </button>
+                </Button>
               </span>
             )}
           </div>
