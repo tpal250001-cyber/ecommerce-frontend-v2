@@ -10,6 +10,7 @@ import { CheckoutPage} from './pages/createorder'
 import { BrowserRouter,Routes , Route,Outlet} from 'react-router-dom'
 import { Navbar } from './components/Navbar'
 import { CreateProduct } from './components/CreateProduct'
+import { RecoilRoot } from 'recoil'
    
  function Layout(){
 
@@ -24,6 +25,7 @@ return (<div>
   function App(){
 
   return <>
+  <RecoilRoot>
     <BrowserRouter>
     <Routes>
      <Route   element={<Layout />}>
@@ -38,6 +40,7 @@ return (<div>
    </Route>
    </Routes>
    </BrowserRouter>
+   </RecoilRoot>
     </>
   
 

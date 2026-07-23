@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 //import { Product } from "../../../backenenend/models/db1";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { cartitem } from "./atoms/counteratom";
 export function Cart() {
   const token = localStorage.getItem("token");
-  const [cart, setcart] = useState(null);
+  const [cart, setcart] = useRecoilState(cartitem);
   const [count, setcount] = useState();
   const Userid = localStorage.getItem("userid");
 

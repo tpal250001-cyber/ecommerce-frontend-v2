@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 //import axios from "axios";
 import { Address } from "./Address";
+import { useRecoilState } from "recoil";
+import { cartitem } from "./atoms/counteratom";
 
 
 export function CheckoutPage() {
-  const [cart, setCart] = useState(null);
+  const [cart, setCart] = useRecoilState(cartitem);
   const [showAddressForm, setShowAddressForm] = useState(true);
  // const [ datas, setdatas] = useState(null)
   const token = localStorage.getItem("token"); // ya jaha bhi tum token store karte ho
