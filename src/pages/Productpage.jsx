@@ -51,6 +51,14 @@ export const Productpage = () => {
   
   
   }
+  if(!products){
+   
+   return<div>
+  
+      ...loading
+
+    </div>
+  }
 
   return (
     <div className="h-full w-full flex justify-center items-center bg-white " >
