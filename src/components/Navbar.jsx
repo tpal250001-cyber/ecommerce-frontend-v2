@@ -10,6 +10,7 @@ const token = localStorage.getItem("token");
 
   function logout() {
     localStorage.removeItem("token");
+    alert("logout successfully")
     navigate("/signin")
     
   }
@@ -30,7 +31,8 @@ const token = localStorage.getItem("token");
           </div>
 
           <div>
-            { token== null ? (
+            
+            { !token || token === undefined || token === null? (
               <span>
                 <Link
                   to="/signup"

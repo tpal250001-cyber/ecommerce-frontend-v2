@@ -21,8 +21,10 @@ export const Productpage = () => {
     Loadproducts();
   }, []);
   async function Addtocartt(productid) {
+    try{
     const Userid = localStorage.getItem("userid");
     const token = localStorage.getItem("token");
+    if(token){
    // const cart = await fetch("http://localhost:3001/api/auth/v4/cart", {
    const cart = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/cart`,{  
    method: "post",
@@ -37,6 +39,17 @@ export const Productpage = () => {
     });
     const data = await cart.json();
     console.log(data);
+  }else{
+  
+    alert("Login First")
+
+  }
+    }catch(error){
+    console.log(error)
+   alert("Server Error")
+    }
+  
+  
   }
 
   return (

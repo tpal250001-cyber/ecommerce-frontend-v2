@@ -22,17 +22,22 @@ export function Signin() {
       body: JSON.stringify(form),
     });
     const data = await res.json();
-
-    localStorage.setItem("token", data.token);
-    localStorage.setItem("userid", data.userid);
+  
+    if(data.token){
+     localStorage.setItem("token", data.token);
+     localStorage.setItem("userid", data.userid);
     console.log(data);
+    alert("User logged In ")
    navigate("/")
+  }else{
+   alert("Wrong Credentials")
+   }
   }
   return (
     <>
     <section className="min h-screen flex items-center justify-center bg-red-200 ">
         <div className="bg-white w-100 space-y-2  h-80 rounded-2xl text-center ">
-          <h1 className="mt-5">Welcome to Signup Page</h1>
+          <h1 className="mt-5">Welcome to Signin Page</h1>
           <input type="text"name="name" value={form.name} onChange={Handlechange} className="border-2 rounded w-80 pt-2 mt-5 " />
           <input  type="password" name="password" value={form.password} onChange={Handlechange} className="border-2 rounded  w-80"  />
           <button type="submit" onClick={Onhandlesubmit}  className="w-80 bg-blue-600 text-white" > button </button>

@@ -16,6 +16,7 @@ export function Cart() {
   }, []);
 
   async function Loadproducts() {
+    try{
    // const carts = await fetch(
      // `http://localhost:3001/api/auth/v4/getcart/${Userid}`,
      const carts = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/v4/getcart/${Userid}`, 
@@ -29,10 +30,11 @@ export function Cart() {
       },
     );
     const data = await carts.json();
+    if(data){
     console.log(data);
     setcart(data.message);
 
-    const total = data.message.items.reduce((acc, current) => {
+    const total = data.message?.items?.reduce((acc, current) => {
       acc = acc + current.Productid.price * current.quantity;
       return  acc;
     }, 0);
@@ -41,6 +43,13 @@ export function Cart() {
     const counts = localStorage.getItem("cartcount");
     console.log("totalcount", counts);
     setcount(counts);
+  }
+
+    }catch(error){
+
+   console.log(error)
+
+    }
   }
 
   async function Updatequantity(Productid, actions) {
@@ -91,10 +100,10 @@ export function Cart() {
   function prcdtocart() {
     navigate("/order");
   }
-  if (cart === null) {
+  if (cart === null || !cart) {
     return <div> cad is empty</div>;
   }
-  if(cart.items.length === 0){
+  if(cart.items?.length === 0){
   return <div>
   <h1>cart is empty is</h1>
 
@@ -162,7 +171,7 @@ export function Cart() {
     <div className="w-full h-full grid justify-center place-items-center bg-[#F5F3F7] py-8">
       
       <div className="     bg-white shadow-lg rounded-2xl p-4  grid  place-items-center w-120 md:w-200 lg:w-250  gap-3 ">
-        {cart.items.map((x) => {
+        {cart.items?.map((x) => {
           if (!x) {
             // kuch render nahi hoga kyuki prodcid m kuch nahi h reach null ko skip kar deta
             return <h1>cart is empty</h1>;
@@ -221,7 +230,14 @@ export function Cart() {
           );
         })}
  
-        <div className="flex items-center justify-between pt-3 mt-1 border-t border-gray-200">
+      {  count === "undefined" || count === undefined || !count || count === null ?(
+        <div>
+    card is empty
+
+      </div>
+      
+      
+      ):(<div className="flex items-center justify-between pt-3 mt-1 border-t border-gray-200">
           <div className="text-xl  font-semibold text-gray-800">
             Total Amount :{count}
           </div>
@@ -232,6 +248,10 @@ export function Cart() {
             Procced to cart
           </button>
         </div>
+         )
+         
+         }
+
       </div>
      
     </div>
